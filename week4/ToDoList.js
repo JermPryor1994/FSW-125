@@ -56,5 +56,5 @@ jarvis.delete('/:todoId', (req, res)=>{
     const todoId = req.params.todoId;
     const todoIndex = toDoList.findIndex(todo => todo._id === todoId);
     toDoList.splice(todoIndex, 1);
-    res.send(`YOU DI IT! Be proud of yourself! :)`)
+    res.send(`YOU DID IT! Be proud of yourself! :)`)
 })
