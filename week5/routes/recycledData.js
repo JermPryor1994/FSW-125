@@ -1,16 +1,6 @@
 const express = require('express');
-const jarvis = express();
+const recycleRouter = express.Router();
 const { v4: asdasd } = require('uuid');
-
-const PORT = 3000;
-jarvis.listen(PORT, ()=>{
-    console.log(`Server has been started on ${PORT}`);
-})
-
-
-
-//JSON Parser
-jarvis.use(express.json())
 
 //Created array for testing
 let recycledItems = [
@@ -20,20 +10,17 @@ let recycledItems = [
     {name: 'Childs Toy', description: 'Rubber', recyclable: false, quantity: 1, pricePerUnit: 5, _id: asdasd()},
 ]
 
-//GET ALL- http://localhost:3000/intakeItems
-jarvis.get('/itemsIntake', (req, res)=>{
+recycleRouter.get('/', (req, res)=>{
     res.send(recycledItems)
 })
 
-//GET ONE--
-jarvis.get('/itemsIntake/:itemId', (req, res)=>{
+recycleRouter.get('/:itemId', (req, res)=>{
     const itemId = req.params.itemId
     const singleItem = recycledItems.find(item => item._id === itemId)
     res.send(singleItem)
 })
 
-//POST - http://localhost:3000/intakeItems
-jarvis.post('/itemsIntake', (req, res)=>{
+recycleRouter.post('/', (req, res)=>{
     const newItem = req.body
     newItem.id = asdasd()
     recycledItems.push(newItem)
@@ -41,8 +28,7 @@ jarvis.post('/itemsIntake', (req, res)=>{
     res.send(`Added new item, ${newItem.name}, for processing.`)
 })
 
-//DELETE ONE--
-jarvis.delete('/itemsIntake/:itemId', (req, res) =>{
+recycleRouter.delete('/:itemId', (req, res) =>{
     const itemId = req.params.itemId;
     const itemIndex = recycledItems.findIndex(item => item._id === itemId);
     recycledItems.splice(itemIndex, 1);
@@ -50,11 +36,12 @@ jarvis.delete('/itemsIntake/:itemId', (req, res) =>{
     res.send(`Recycled Item Successfully Deleted!`);
 })
 
-//PUT(UPDATE) ONE--
-jarvis.put('/itemsIntake/:itemId', (req, res)=>{
+recycleRouter.put('/:itemId', (req, res)=>{
     const itemId = req.params.itemId;
     const itemIndex = recycledItems.findIndex(item => item._id === itemId);
     Object.assign(recycledItems[itemIndex], req.body);
     res.send('Item Successfully Updated!');
 })
 
+
+module.exports = recycleRouter;
