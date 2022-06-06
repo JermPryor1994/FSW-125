@@ -1,0 +1,59 @@
+html {
+  background-color: #eee;
+  text-align: center;
+  font-family: "Arial", sans-serif;
+  font-size: .8em;
+}
+
+navbar {
+  background-color:#000;
+}
+
+.delete-btn{
+  background-color: rgb(173, 50, 2);
+  color: white;
+  margin-right: 1px;
+}
+
+.edit-btn{
+  background-color: rgb(114, 114, 212);
+  color: white;
+}
+
+.submit-btn{
+  background-color: green;
+  color: white;
+}
+
+.add-item {
+  background-color: rgb(211, 116, 39);
+  color: white;
+}
+
+.item {
+  width: 800px;
+  margin: 10px 5px 10px 5px;
+  display: inline-block;
+  border-top: solid 1px #000;
+}
+.item > p.wide {
+    width: 400px;
+    float: left;
+    text-align: left;
+}
+
+.item > p.medium {
+  width: 200px;
+  float: left;
+  text-align: left;
+}
+
+.item > p.narrow {
+  width: 100px;
+  float: left;
+  text-align: left;
+}
+
+.item > h1 {
+  background-color: rgb(27, 165, 22);
+}
